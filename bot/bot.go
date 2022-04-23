@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"fmt"
 	"irekean-discord-direr/config"
 	"irekean-discord-direr/dice"
 	"log"
@@ -40,7 +39,7 @@ func Start() {
 		log.Println(err.Error())
 		return
 	}
-	fmt.Println("Bot is running !")
+	log.Println("Bot is running !")
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {

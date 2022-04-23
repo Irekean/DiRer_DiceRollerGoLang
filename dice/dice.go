@@ -14,7 +14,7 @@ import (
 
 func Roll(rollText string) (string, error) {
 	var Result int = 0
-	var RegexRoll = regexp.MustCompile(`(?m)[+-]{0,1}\d{1,3}d\d{1,3}|[+-]\d{1,3}`)
+	var RegexRoll = regexp.MustCompile(`(?m)[+-]{0,1}\d{0,3}d\d{1,3}|[+-]\d{1,3}`)
 	var foundSomething bool = false
 	var ret string = "`"
 
@@ -69,6 +69,9 @@ func Roll(rollText string) (string, error) {
 func RollDice(dice string) (int, []int, error) {
 	var ret []int
 	var total int = 0
+	if dice[0:1] == "d" {
+		dice = "1" + dice
+	}
 	splitted := strings.Split(dice, "d")
 	numberOfDices, _ := strconv.Atoi(splitted[0])
 	sidesOfDice, _ := strconv.Atoi(splitted[1])
